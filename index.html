@@ -21,16 +21,45 @@
     <!-- Header section end  -->
     <main class="container mx-auto">
         <section>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-5 gap-4">
                 <!-- Left image start  -->
-                <div class="w-full">
-                    <img src="./images/money.jpg" alt="checking money bag">
+                <div class="col-span-3">
+                    <div class="w-full">
+                        <img src="./images/money.jpg" alt="checking money bag" class="h-96">
+                    </div>
                 </div>
                 <!-- left image end -->
 
                 <!-- Right money calculation start -->
-                <div class="text-center">
-                    <h3 class="text-xl font-bold">Income</h3>
+                <div class="col-span-2">
+                    <div class="text-center bg-gray-100">
+                        <!-- Income start  -->
+                        <div class="pt-5">
+                            <h3 class="text-xl font-bold py-5">Income</h3>
+                            <label for="" class="font-medium mr-2">Income: </label>
+                            <input type="text" placeholder="Enter your income" class="border border-gray-300 bg-zinc-300 px-1 py-1 rounded">
+                        </div>
+                        <!-- Income End  -->
+
+                        <!-- Expense Start  -->
+                        <div class="pb-5">
+                            <h3 class="text-xl font-bold py-5">Expense</h3>
+                            <div class="mb-4">
+                                <label for="" class="font-medium mr-2">Food: </label>
+                                <input type="text" placeholder="Enter your expense" class="border border-gray-300 bg-zinc-300 px-1 py-1 rounded">
+                            </div>
+                            <div class="my-4">
+                                <label for="" class="font-medium mr-2">Rent: </label>
+                                <input type="text" placeholder="Enter your expense" class="border border-gray-300 bg-zinc-300 px-1 py-1 rounded">
+                            </div>
+                            <div class="my-4">
+                                <label for="" class="font-medium mr-2">Clothes: </label>
+                                <input type="text" placeholder="Enter your expense" class="border border-gray-300 bg-zinc-300 px-1 py-1 rounded">
+                            </div>
+                            <button type="text" class="bg-indigo-400 px-10 py-1 text-lg text-white font-medium rounded">Calculate</button>
+                        </div>
+                        <!-- Expense End  -->
+                    </div>
                 </div>
                 <!-- Right money calculation end -->
             </div>
