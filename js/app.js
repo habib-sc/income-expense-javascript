@@ -7,12 +7,19 @@ document.getElementById('calculate-btn').addEventListener('click', function() {
     const clothesExpense = getInputValue('clothes-expense-input');
     // Total expense calculation 
     const totalExpenses = foodExpense + rentExpense + clothesExpense;
-    // displaying total expense
-    setValue('total-expenses', totalExpenses);
     // Total Balance calculation 
     const totalBalance = income - totalExpenses;
-    // displying total balance 
-    setValue('total-balance', totalBalance);
+
+    // Validatating expense 
+    if (totalExpenses > income) {
+        pushError('Your expenses is highter than your income.')
+    } else {
+        // displaying total expense
+        setValue('total-expenses', totalExpenses);
+        // displying total balance 
+        setValue('total-balance', totalBalance);
+    }
+
 })
 
 // Saving event 
@@ -38,10 +45,24 @@ function getIncome() {
 function getInputValue(inputFieldId) {
     const input = document.getElementById(inputFieldId);
     const inputValue = parseInt(input.value);
+    const inputLabel = input.previousElementSibling.innerText;
+    // validation start
+    if (isNaN(inputValue)) {
+        pushError('Invalid input in ' + '"' + inputLabel + '"' + 'field.');
+        return;
+    } else if (inputValue < 0) {
+        pushError('Invalid input in ' + '"' + inputLabel + '"' + 'field. Please enter positve number.');
+        return;
+    }
+
     return inputValue;
 }
 
 function setValue(fieldId, result) {
     const value = document.getElementById(fieldId).innerText = result;
     return value;
+}
+
+function pushError(errorMessage) {
+    document.getElementById('error-field').innerText = errorMessage;
 }
