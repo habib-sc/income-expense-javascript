@@ -13,7 +13,6 @@ document.getElementById('calculate-btn').addEventListener('click', function() {
     const totalBalance = income - totalExpenses;
     // displying total balance 
     setValue('total-balance', totalBalance);
-
 })
 
 // Saving event 
