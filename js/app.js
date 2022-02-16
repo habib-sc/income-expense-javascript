@@ -23,6 +23,12 @@ document.getElementById('saving-btn').addEventListener('click', function() {
     const savingAmount = (getIncome() * percentageInput) / 100;
     // displaying saving amount 
     setValue('saving-amount', savingAmount);
+    // Remaining balance calculation 
+    const currentBalance = document.getElementById('total-balance').innerText;
+    const remainingBalance = parseInt(currentBalance) - savingAmount;
+    console.log(remainingBalance);
+    // Displying remaining amount 
+    setValue('remainning-amount', remainingBalance);
 })
 
 function getIncome() {
