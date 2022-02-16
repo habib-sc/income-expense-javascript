@@ -19,7 +19,6 @@ document.getElementById('calculate-btn').addEventListener('click', function() {
         // displying total balance 
         setValue('total-balance', totalBalance);
     }
-
 })
 
 // Saving event 
@@ -27,42 +26,52 @@ document.getElementById('saving-btn').addEventListener('click', function() {
     // Percentage calculation 
     const percentageInput = getInputValue('saving-input');
     const savingAmount = (getIncome() * percentageInput) / 100;
-    // displaying saving amount 
-    setValue('saving-amount', savingAmount);
     // Remaining balance calculation 
     const currentBalance = document.getElementById('total-balance').innerText;
     const remainingBalance = parseInt(currentBalance) - savingAmount;
     console.log(remainingBalance);
-    // Displying remaining amount 
-    setValue('remainning-amount', remainingBalance);
+
+    // validating saving amount 
+    if (savingAmount > currentBalance) {
+        pushError("You don't have enough balance to save !");
+    } else {
+        // displaying saving amount 
+        setValue('saving-amount', savingAmount);
+        // Displying remaining amount 
+        setValue('remainning-amount', remainingBalance);
+    }
 })
 
+// Get income function 
 function getIncome() {
     const income = getInputValue('income-input');
     return income;
 }
 
+// Get input value function 
 function getInputValue(inputFieldId) {
     const input = document.getElementById(inputFieldId);
     const inputValue = parseInt(input.value);
     const inputLabel = input.previousElementSibling.innerText;
     // validation start
     if (isNaN(inputValue)) {
-        pushError('Invalid input in ' + '"' + inputLabel + '"' + 'field.');
+        pushError('Invalid input in ' + '"' + inputLabel + '"' + ' field.');
         return;
     } else if (inputValue < 0) {
-        pushError('Invalid input in ' + '"' + inputLabel + '"' + 'field. Please enter positve number.');
+        pushError('Invalid input in ' + '"' + inputLabel + '"' + ' field. Please enter positve number.');
         return;
     }
-
+    // returning input value 
     return inputValue;
 }
 
+// display value function 
 function setValue(fieldId, result) {
     const value = document.getElementById(fieldId).innerText = result;
     return value;
 }
 
+// Error function 
 function pushError(errorMessage) {
     document.getElementById('error-field').innerText = errorMessage;
 }
